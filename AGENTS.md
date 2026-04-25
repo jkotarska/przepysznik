@@ -1,5 +1,7 @@
 # AGENTS.md - Instructions for Adding Recipes to Przepysznik
 
+> **⚠️ CRITICAL: THIS FILE (AGENTS.md) MUST NEVER BE PUSHED TO THE REMOTE REPOSITORY. IT IS FOR LOCAL USE ONLY.**
+
 ## Where Recipes Are Located
 All recipes are stored in the `_posts` directory as individual markdown files.
 Each recipe follows the Jekyll blog post format with YAML frontmatter.
@@ -69,6 +71,8 @@ Use relevant Polish tags such as:
 1. Create file: `_posts/YYYY-MM-DD-title.md`
 2. Add proper YAML frontmatter
 3. Write recipe content in markdown
-4. Commit and push to your fork of the repository
+4. Commit and push to your fork of the repository (EXCLUDING AGENTS.md)
 5. Create a Pull Request (PR) to the main repository (jkotarska/przepysznik)
 6. After PR is merged, site will automatically update
+
+> Remember: Never include AGENTS.md in your commits or push it to any remote repository.
