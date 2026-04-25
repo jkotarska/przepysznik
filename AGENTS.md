@@ -69,5 +69,6 @@ Use relevant Polish tags such as:
 1. Create file: `_posts/YYYY-MM-DD-title.md`
 2. Add proper YAML frontmatter
 3. Write recipe content in markdown
-4. Commit and push to repository
-5. Site will automatically update
+4. Commit and push to your fork of the repository
+5. Create a Pull Request (PR) to the main repository (jkotarska/przepysznik)
+6. After PR is merged, site will automatically update
