@@ -1,78 +1,182 @@
-# AGENTS.md - Instructions for Adding Recipes to Przepysznik
+# AGENTS.md
 
-> **⚠️ CRITICAL: THIS FILE (AGENTS.md) MUST NEVER BE PUSHED TO THE REMOTE REPOSITORY. IT IS FOR LOCAL USE ONLY.**
+## Purpose
 
-## Where Recipes Are Located
-All recipes are stored in the `_posts` directory as individual markdown files.
-Each recipe follows the Jekyll blog post format with YAML frontmatter.
+Defines how to add a new recipe post.
 
-## How to Add a New Recipe
+---
 
-### 1. Create a New File
-Create a new markdown file in the `_posts` directory with the naming convention:
+## File Location
+
+Create a new file in:
+
 ```
-YYYY-MM-DD-title-of-recipe.md
+/_posts/
 ```
-Where:
-- YYYY-MM-DD is the current date (or desired publish date)
-- title-of-recipe is a lowercase, hyphen-separated version of the recipe title
-- Example: `2026-04-25-szarlotka-jabłkowa.md`
 
-### 2. Required Frontmatter
-Each recipe file must begin with YAML frontmatter enclosed in `---` lines:
+---
 
-```markdown
+## File Naming
+
+```
+YYYY-MM-DD-title.md
+```
+
+Example:
+
+```
+2026-04-25-jablecznik-joanny.md
+```
+
+Rules:
+
+* lowercase only
+* hyphens instead of spaces
+* no Polish characters
+
+---
+
+## Frontmatter (Required)
+
+```yaml
 ---
 layout: post
-title: "Recipe Title in Polish"
-subtitle: "Optional English title or description"
-cover-img: "/path/to/image.jpg" # Optional: large background image
-thumbnail-img: "/path/to/image.jpg" # Optional: small image for homepage
-share-img: "/path/to/image.jpg" # Optional: image for social sharing
-tags: [tag1, tag2, tag3] # Optional: relevant tags (e.g., [deser, ciasto, owoce])
-author: "Author Name" # Optional: defaults to site author
-comments: true # Optional: enable/disable comments
+title: "Polish title"
+subtitle: "Optional polish subtitle"
+cover-img: /assets/img/YYYY-MM-DD-name-01.jpg
+thumbnail-img: /assets/img/YYYY-MM-DD-name-02.jpg
+share-img: /assets/img/YYYY-MM-DD-name-01.jpg
+tags: [tag1, tag2]
+comments: true
 ---
 ```
 
-### 3. Recipe Content
-After the frontmatter, add the recipe content in markdown format:
+---
 
-#### Suggested Structure:
-- Brief introduction about the recipe
-- **Składniki** (Ingredients) section - can use a table or list
-- **Przepis** (Instructions) section with numbered steps
-- Optional tips or notes using Jekyll callout boxes:
-  - `{: .box-warning}` for warnings
-  - `{: .box-note}` for notes
-  - `{: .box-error}` for errors
+## Images
 
-### 4. Example Recipe Format
-See existing recipes in `_posts/` for examples:
-- `2022-01-13-chocolate-chip-cookies.md` - shows ingredient table and warnings
-- `2024-12-22-Jablecznik-Joanny.md` - another recipe example
+* Store in:
 
-### 5. Important Notes
-- All images should be placed in the `assets/img/` directory or use external URLs
-- The site uses kramdown markdown processor
-- Recipes are automatically added to the site feed and tag pages
-- After adding a file, commit and push to GitHub to trigger site rebuild
-- The site is built with Jekyll using the Beautiful Jekyll theme
+```
+/assets/img/
+```
 
-### 6. Tagging Guidelines
-Use relevant Polish tags such as:
-- deser, obiad, śniadanie, kolacja
-- ciasto, ciasteczka, chleb, zupa
-- mięso, ryby, wegetariańskie, wegańskie
-- sezonowe (wiosna, lato, jesień, zima)
-- specjalne okazje (święta, urodziny, itp.)
+* Naming:
 
-## Workflow Summary
-1. Create file: `_posts/YYYY-MM-DD-title.md`
-2. Add proper YAML frontmatter
-3. Write recipe content in markdown
-4. Commit and push to your fork of the repository (EXCLUDING AGENTS.md)
-5. Create a Pull Request (PR) to the main repository (jkotarska/przepysznik)
-6. After PR is merged, site will automatically update
+```
+YYYY-MM-DD-name-01.jpg
+YYYY-MM-DD-name-02.jpg
+```
 
-> Remember: Never include AGENTS.md in your commits or push it to any remote repository.
+---
+
+## Content Structure (Required)
+
+```md
+## Składniki
+
+| składnik | ilość |
+
+## Przepis
+```
+
+If recipe contains separate list of ingredients:
+
+```md
+## Składniki
+
+### Sekcja (ex. Ciasto|Krem|Polewa)
+
+| składnik | ilość |
+
+## Przepis
+```
+
+---
+
+## Formatting Rules
+
+* Markdown only
+* Tables for ingredients
+* Use `##`, `###`
+* Highlight key values (e.g. **160℃**)
+
+---
+
+## Special Blocks
+
+```md
+{: .box-note}
+```
+
+```md
+{: .box-warning}
+```
+
+```md
+{: .box-error}
+```
+
+---
+
+## Validation Checklist
+
+* [ ] filename correct
+* [ ] frontmatter valid
+* [ ] images exist
+* [ ] renders correctly
+* [ ] no typos
+
+---
+
+## Writing Style Guidelines
+
+* Write in Polish
+* Keep sentences short and clear
+* Use simple, everyday language (no overcomplication)
+* Prefer imperative form (e.g. "Dodaj", "Wymieszaj", "Piecz")
+* Avoid unnecessary filler text
+* Keep a consistent tone across posts
+* Use emojis sparingly (or not at all)
+* Be practical — focus on steps, not storytelling
+
+Formatting:
+
+* Use bold for key values (e.g. **160℃**, **10 min**)
+* Keep sections structured and predictable
+* Ingredients → clean table format
+* Instructions → step-by-step
+
+Goal:
+Clear, readable, and easy-to-follow recipe.
+
+---
+
+## Git Workflow (Fork + PR)
+
+1. Create a branch:
+
+```bash
+git checkout -b post/<slug>
+```
+
+2. Commit changes:
+
+```bash
+git add . -- ':!AGENTS.md'
+git commit -m "Add post: <slug>"
+```
+
+3. Push to your fork:
+
+```bash
+git push origin post/<slug>
+```
+
+4. Create Pull Request to:
+
+```
+jkotarska/przepysznik
+```
+
+Done.
